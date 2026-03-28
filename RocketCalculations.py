@@ -17,7 +17,7 @@ class RocketCalculations:
     def mass_flow_rate(self): 
         return self.thrust / self.exhaust_velocity()
     
-    def burn_time(self): 
+    def calculate_burn_time(self): 
         if (self.burn_time is None):
             return self.fuel_mass / self.mass_flow_rate()
         return self.burn_time
