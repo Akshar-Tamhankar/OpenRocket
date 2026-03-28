@@ -1,0 +1,38 @@
+Primary goal: Given basic rocket parameters, 
+compute essential performance metrics and output 
+them in a human-readable form (file or graph).
+
+1. Accept rocket input data.
+2. Compute key performance metrics: 
+    a. Burn time
+    b. Mass flow rate 
+    c. Specific impulse
+    d. Delta-v
+3. Output results in a file or a graph. 
+
+To Calculate: 
+
+1. Mass flow rate 
+2. Specific impulse
+3. Delta-v
+
+Inputs: 
+
+1. Dry mass.
+2. Fuel mass. 
+3. Thrust.
+4. Specific impulse. 
+5. Burn time.
+
+Validation: 
+
+1. All masses >= 0.
+2. Thrust > 0. 
+3. Specific impulse > 0. 
+4. Burn time > 0 (if given). 
+
+Output: 
+
+1. Generate graph of calculated values 
+over time 
+2. Export as a file. 
