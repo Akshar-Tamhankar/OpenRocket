@@ -55,3 +55,37 @@ class RocketCalculations:
                 writer.writerow([key, value])
 
         print(f"Summary saved to {filename}")
+
+def get_input(prompt, min_value=0, optional=False):
+    while True:
+        try:
+            value = input(prompt)
+            if optional and value.strip() == "":
+                return None
+            value = float(value)
+            if value < min_value:
+                print(f"Value must be >= {min_value}.")
+                continue
+            return value
+        except ValueError:
+            print("Invalid input. Enter a number.")
+
+def main():
+    print("=== Rocket Performance Analyzer Version 1 ===")
+    dry_mass = get_input("Enter dry mass (kg): ")
+    fuel_mass = get_input("Enter fuel mass (kg): ")
+    thrust = get_input("Enter thrust (N): ")
+    isp = get_input("Enter specific impulse (s): ")
+    burn_time = get_input("Enter burn time (s) [press enter to calculate]: ", optional=True)
+
+    rocket = RocketCalculations(dry_mass, fuel_mass, thrust, isp, burn_time)
+    summary = rocket.summary()
+
+    print("\n--- Rocket Performance Summary ---")
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+
+    rocket.save_to_csv()
+
+if __name__ == "__main__":
+    main()
