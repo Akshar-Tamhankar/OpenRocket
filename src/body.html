@@ -1,0 +1,322 @@
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-top"><p class="ld-code">// ignition_sequence</p><p class="ld-id">UR-001 &middot; MK I &middot; Rev P0</p></div>
+  <div class="ld-count"><span>T–</span><b id="ldN">10</b></div>
+  <div class="ld-row"><div class="ld-log" id="ldLog"></div><div class="ld-pct" id="ldPct">000%</div>
+    <div class="ld-go" id="ldGo" hidden><p class="ld-go-k">Best with headphones</p><div class="ld-go-b"><button class="btn solid" id="ldSnd" type="button"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>Enter with sound</button><button class="btn" id="ldQuiet" type="button">Enter without sound</button></div></div></div>
+  <i class="ld-bar" id="ldBar"></i>
+</div>
+<div class="flash" id="flash" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><i class="ring"></i><i class="ch"></i><span class="cl" id="cursorLabel"></span></div>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<svg class="hud" id="hud" aria-hidden="true"></svg>
+<svg class="dims" id="dims" aria-hidden="true">
+  <line id="dExtA"></line><line id="dExtB"></line><line id="dLine"></line>
+  <path id="dArrA"></path><path id="dArrB"></path>
+  <text id="dText">1,560 mm</text>
+</svg>
+<div class="callouts" id="callouts" aria-hidden="true">
+  <div class="co" data-i="0"><span class="tag"><span class="ball">1</span><span class="nm">Nose cone</span></span><i class="ld"></i><i class="pt"></i></div>
+  <div class="co below" data-i="1"><span class="tag"><span class="ball">2</span><span class="nm">Payload tube</span></span><i class="ld"></i><i class="pt"></i></div>
+  <div class="co" data-i="2"><span class="tag"><span class="ball">3</span><span class="nm">Avionics bay</span></span><i class="ld"></i><i class="pt"></i></div>
+  <div class="co below" data-i="3"><span class="tag"><span class="ball">4</span><span class="nm">Fin can</span></span><i class="ld"></i><i class="pt"></i></div>
+  <div class="co" data-i="4"><span class="tag"><span class="ball">5</span><span class="nm">Motor</span></span><i class="ld"></i><i class="pt"></i></div>
+</div>
+<div class="fhud" id="fhud" aria-hidden="true">
+  <div class="cam" id="fCam"><i></i><b id="fCamNo">Cam 1</b><span id="fCamNm">Pad</span><em id="fCamMm">27 mm</em></div>
+  <div class="big" id="fT">T+00.00</div>
+  <div class="r"><span>Altitude</span><b id="fAlt">0 m</b></div>
+  <div class="r"><span>Velocity</span><b id="fVel">0 m/s</b></div>
+  <div class="r"><span>Thrust</span><b id="fThr">0 N</b></div>
+  <div class="r"><span>Phase</span><b id="fPh">On the pad</b></div>
+  <div class="bar" id="fBar"><i></i></div>
+</div>
+<div class="fhud-box" id="fBox" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="fBoxT">0 m</span></div>
+
+<header class="nav">
+  <a class="mark" href="#top">Untitled Rocketry</a>
+  <nav aria-label="Sections">
+    <ul class="links">
+      <li><a href="#vehicle">Vehicle</a></li>
+      <li><a href="#data">Test data</a></li>
+      <li><a href="#progress">Progress</a></li>
+      <li><a href="#log">Build log</a></li>
+      <li><a href="#launch">Flight</a></li>
+    </ul>
+  </nav>
+  <a class="nav-cta" href="#contact">Launch alerts</a>
+  <button class="tog" id="snd" type="button" aria-pressed="false"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">Sound off</span></button>
+  <button class="tog" id="pz" type="button" aria-pressed="false" aria-label="Pause motion"><span class="pz" aria-hidden="true"></span><span class="lbl">Pause</span></button>
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+</header>
+<div class="menu" id="menu" hidden>
+  <button class="menu-close" id="menuClose" type="button">Close</button>
+  <a href="#vehicle">Vehicle</a>
+  <a href="#data">Test data</a>
+  <a href="#progress">Progress</a>
+  <a href="#log">Build log</a>
+  <a href="#crew">Crew</a>
+  <a href="#launch">Flight</a>
+  <a href="#contact">Launch alerts</a>
+</div>
+
+<nav class="ruler" id="ruler" aria-label="Sections"></nav>
+
+<main>
+  <section class="sheet hero" id="top" data-sheet="General arrangement" data-cursor="Drag to rotate">
+    <p class="code" id="heroCode" data-code="// 01_general_arrangement" aria-hidden="true"></p>
+    <h1><span class="ln"><span>We're</span></span> <span class="ln"><span>building</span></span> <span class="ln"><span>a rocket.</span></span></h1>
+    <p class="lede">A student team designing, casting and flying a high-power rocket from scratch. We make our own sugar motors, read the thrust off video, and post everything here.</p>
+    <div class="cta">
+      <a class="btn solid" href="#log">Follow the build</a>
+      <a class="btn" href="#data">See the test data</a>
+    </div>
+    <dl class="readout" aria-label="Build status">
+      <div><dt>Next milestone</dt><dd class="dc">Static fire</dd></div>
+      <div><dt>Build progress</dt><dd class="pct-text dc">36%</dd></div>
+      <div><dt>Launch window</dt><dd class="dc">TBD</dd></div>
+    </dl>
+    <div class="cue" aria-hidden="true"><i></i>Scroll to begin</div>
+    <aside class="tb" aria-label="Sheet 1 of 8, general arrangement"><div><span>Sheet</span><b class="dc">1 of 8</b></div><div><span>Title</span><b class="dc">General arrangement</b></div><div><span>Rev</span><b class="dc">P0</b></div><div><span>Date</span><b class="dc">2026-10-04</b></div></aside>
+  </section>
+
+  <section class="sheet vehicle" id="vehicle" data-sheet="Vehicle">
+    <div class="pin">
+      <p class="code vcode" id="vCode" data-code="// 02_exploded_assembly" aria-hidden="true"></p>
+      <div class="intro" id="vIntro">
+        <h2 class="h2"><span class="ln"><span>Every part,</span></span><span class="ln"><span>drawn before</span></span><span class="ln"><span>it's cut.</span></span></h2>
+        <p class="sub">MK I is a single-stage rocket built around a motor we cast ourselves. Keep scrolling to take it apart, one part at a time.</p>
+      </div>
+      <div class="focus" id="focus" aria-live="polite">
+        <span class="step" id="fStep">Part 1 of 5</span>
+        <b class="fno" id="fNo" aria-hidden="true">01</b>
+        <h3 id="fName">Nose cone</h3>
+        <dl id="fSpec"></dl>
+        <span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="bomw" id="bomW">
+        <table class="bom" id="bom">
+          <caption><span>Parts list</span><span class="bom-id">BOM 02 / MK I</span></caption>
+          <thead><tr><th scope="col">Item</th><th scope="col">Part</th><th scope="col">Spec</th><th scope="col">Mass</th><th scope="col">Qty</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ball">1</span></td><td>Nose cone</td><td>Ogive 5:1, printed PETG, carbon wrap</td><td>180 g</td><td>1</td></tr>
+            <tr><td><span class="ball">2</span></td><td>Payload tube</td><td>98 mm fiberglass, main chute inside</td><td>260 g</td><td>1</td></tr>
+            <tr><td><span class="ball">3</span></td><td>Avionics bay</td><td>Altimeter, GPS, arming key</td><td>310 g</td><td>1</td></tr>
+            <tr><td><span class="ball">4</span></td><td>Fin can</td><td>4 carbon fins, through-the-wall</td><td>420 g</td><td>1</td></tr>
+            <tr><td><span class="ball">5</span></td><td>Motor</td><td>KNSB 65/35, 38 mm casing</td><td>240 g</td><td>1</td></tr>
+          </tbody>
+          <tfoot><tr><td></td><td class="lo">Lift-off mass</td><td></td><td>1,410 g</td><td>5</td></tr></tfoot>
+        </table>
+        <p class="bom-note">Specs are placeholders until the design freezes.</p>
+      </div>
+      <aside class="tb vtb" id="vTb" aria-label="Sheet 2 of 8, exploded assembly"><div><span>Sheet</span><b class="dc">2 of 8</b></div><div><span>Title</span><b class="dc">Exploded assembly</b></div><div><span>Rev</span><b class="dc">P0</b></div><div><span>Date</span><b class="dc">2026-10-04</b></div></aside>
+    </div>
+  </section>
+
+  <section class="sheet data" id="data" data-sheet="Static test data">
+    <div class="pin">
+      <div class="dhead">
+        <p class="code" data-code="// 03_static_fire" aria-hidden="true"></p>
+        <h2 class="h2 dt1"><span class="ln"><span>Three mixes,</span></span><span class="sr"> read one frame at a time.</span></h2>
+      </div>
+      <div class="dside">
+        <aside class="tb" aria-label="Sheet 3 of 8, static test data"><div><span>Sheet</span><b class="dc">3 of 8</b></div><div><span>Title</span><b class="dc">Static test data</b></div><div><span>Rev</span><b class="dc">P0</b></div><div><span>Date</span><b class="dc">2026-10-04</b></div></aside>
+        <aside class="chem" aria-label="Propellant ingredients, share by mass in the selected mix">
+          <div class="el ox"><span class="an">Z 19, 7, 8</span><span class="role">Oxidizer</span><b class="fm">KNO<sub>3</sub></b><span class="nm">Potassium nitrate</span><span class="mm">101.10 g/mol</span><span class="pc"><b class="dc" data-chem="ox">65</b>%<i aria-hidden="true"></i></span></div>
+          <div class="el fu"><span class="an">Z 6, 1, 8</span><span class="role">Fuel</span><b class="fm">C<sub>6</sub>H<sub>14</sub>O<sub>6</sub></b><span class="nm">Sorbitol</span><span class="mm">182.17 g/mol</span><span class="pc"><b class="dc" data-chem="fu">35</b>%<i aria-hidden="true"></i></span></div>
+        </aside>
+      </div>
+      <div class="dpanel">
+        <figure class="win" id="win">
+          <div class="win-top">
+            <div class="forms" role="group" aria-label="Propellant mix, KNO3 to sorbitol by mass">
+              <button class="form" type="button" data-f="a" aria-pressed="true"><span class="ratio">65/35</span><span class="bar" aria-hidden="true"><i style="width:65%"></i></span><span class="meta"><svg viewBox="0 0 24 6" aria-hidden="true"><line class="series s-a" x1="0" y1="3" x2="24" y2="3"></line></svg><span>24 fps</span></span></button>
+              <button class="form" type="button" data-f="b" aria-pressed="false"><span class="ratio">60/40</span><span class="bar" aria-hidden="true"><i style="width:60%"></i></span><span class="meta"><svg viewBox="0 0 24 6" aria-hidden="true"><line class="series s-b" x1="0" y1="3" x2="24" y2="3"></line></svg><span>24 fps</span></span></button>
+              <button class="form" type="button" data-f="c" aria-pressed="false"><span class="ratio">70/30</span><span class="bar" aria-hidden="true"><i style="width:70%"></i></span><span class="meta"><svg viewBox="0 0 24 6" aria-hidden="true"><line class="series s-c" x1="0" y1="3" x2="24" y2="3"></line></svg><span>15 fps</span></span></button>
+            </div>
+            <button class="replay" id="replay" type="button"><i aria-hidden="true"></i>Replay burn</button>
+          </div>
+          <p class="read" id="read"><span>Time <b data-r="t">0.000</b> s</span><span>Thrust <b data-r="f">0.0</b> N</span><span>Frame <b data-r="i">01</b> of <b data-r="n">39</b></span></p>
+          <svg class="chart" id="chart" data-cursor="Scrub the burn" role="img" aria-label="Thrust in newtons over time in seconds for the three mixes; the selected mix is highlighted"></svg>
+          <dl class="stats" id="stats">
+            <div><dt>Peak</dt><dd><span data-k="peak">0</span><small>N</small></dd></div>
+            <div><dt>Average</dt><dd><span data-k="avg">0</span><small>N</small></dd></div>
+            <div><dt>Burn</dt><dd><span data-k="burn">0</span><small>s</small></dd></div>
+            <div><dt>Impulse</dt><dd><span data-k="imp">0</span><small>N·s</small></dd></div>
+            <div><dt>Class</dt><dd><span data-k="cls">-</span></dd></div>
+            <div><dt>Frames</dt><dd><span data-k="frames">0</span></dd></div>
+          </dl>
+          <i class="glare" aria-hidden="true"></i>
+        </figure>
+      </div>
+      <div class="dfoot">
+        <p class="h2 dt2" aria-hidden="true"><span class="ln"><span>read one frame at a time.</span></span></p>
+        <p class="sub">Each mix burns on the stand at night. We film it and read thrust off the load cell, one reading per frame. Drag the strip to scrub.</p>
+      </div>
+      <div class="reel">
+        <div class="strip" id="strip" tabindex="0" role="slider" aria-label="Burn footage, one frame per reading" aria-valuemin="1" aria-valuemax="39" aria-valuenow="1" aria-valuetext="Frame 1 of 39">
+          <svg class="curve" id="curve" aria-hidden="true">
+            <defs>
+              <clipPath id="cvPastC"><rect id="cvPastR" x="0" y="-24" width="0" height="200"></rect></clipPath>
+              <clipPath id="cvNextC"><rect id="cvNextR" x="0" y="-24" width="0" height="200"></rect></clipPath>
+            </defs>
+            <line class="cv-base" id="cvG0" x1="0" x2="100%"></line>
+            <g id="cvAll">
+              <g clip-path="url(#cvNextC)"><g class="cv-next" id="cvN"></g></g>
+              <g clip-path="url(#cvPastC)"><g class="cv-past" id="cvP"></g></g>
+              <path class="cv-now" id="cvNow" d=""></path>
+            </g>
+          </svg>
+          <span class="axis" aria-hidden="true"><b id="axF">24 fps</b></span>
+          <i class="playhead" aria-hidden="true"></i>
+          <div class="frames" id="frames" aria-hidden="true"></div>
+        </div>
+        <p class="note">Sample curves and rendered frames until our test footage is in. KNO<sub>3</sub>/sorbitol ratios by mass.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet progress" id="progress" data-sheet="Build sequence">
+    <div class="pin">
+      <div class="phead">
+        <p class="code" data-code="// 04_build_sequence" aria-hidden="true"></p>
+        <h2 class="h2"><span class="ln"><span><span id="pct">36</span>% of the way to the pad.</span></span></h2>
+        <p class="sub">Seven stages from first sketch to first flight. Finished parts render solid, the one in the shop is half built, the rest are still drawings.</p>
+      </div>
+      <div class="segs" id="segs" aria-hidden="true"></div>
+      <div class="track-wrap">
+        <svg class="traj" id="traj" aria-hidden="true"></svg>
+        <ol class="track" id="track"></ol>
+      </div>
+      <aside class="tb" aria-label="Sheet 4 of 8, build sequence"><div><span>Sheet</span><b class="dc">4 of 8</b></div><div><span>Title</span><b class="dc">Build sequence</b></div><div><span>Rev</span><b class="dc">P0</b></div><div><span>Date</span><b class="dc">2026-10-04</b></div></aside>
+    </div>
+  </section>
+
+  <section class="sheet log" id="log" data-sheet="Build log">
+    <header class="lg-head">
+      <div class="lg-hl">
+        <p class="code" data-code="// 05_build_log" aria-hidden="true"></p>
+        <h2 class="h2"><span class="ln"><span>Build log</span></span></h2>
+        <p class="sub">Everything we build, test and break, written up as it happens.</p>
+      </div>
+      <dl class="lg-stat">
+        <div><dt>Entries</dt><dd>05</dd></div>
+        <div><dt>Last entry</dt><dd><time datetime="2026-09-28">2026-09-28</time></dd></div>
+        <div class="lg-next"><dt>Next entry</dt><dd>Full-scale static fire</dd></div>
+      </dl>
+    </header>
+
+    <article class="lg-feat" aria-labelledby="lgFT">
+      <a class="lg-fig" href="#log" tabindex="-1" aria-hidden="true" data-img="0">
+        <canvas class="lg-img" width="3" height="2"></canvas>
+        <i class="lg-scan"></i>
+        <span class="lg-tag">Render</span>
+      </a>
+      <p class="lg-figcap" aria-hidden="true"><span>Fig. 05</span><span data-cap="0">The 65/35 motor on the stand, night of the test</span></p>
+      <div class="lg-ftext">
+        <p class="lg-kick"><span class="lg-live"><i></i>Latest</span><span class="lg-dc">Log 05</span></p>
+        <h3 class="lg-ft" id="lgFT"><a href="#log">65/35 vs 60/40 vs 70/30: what changed on the stand</a></h3>
+        <p class="lg-meta"><time class="lg-dc" datetime="2026-09-28">2026-09-28</time><span>Propulsion</span><span class="lg-dc">6 min read</span></p>
+        <p class="lg-ex">Three mixes on one stand, filmed the same way. 70/30 hit hardest and burned out first, 60/40 was soft and slow, and 65/35 sat in between. Here's why MK I flies 65/35.</p>
+        <a class="lg-more" href="#log">Read entry 05<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </article>
+
+    <ol class="lg-list" aria-label="Earlier entries">
+      <li><a class="lg-a" href="#log" data-img="1" aria-label="Reading thrust off video, one frame at a time. Data, 2026-09-19, 4 min read.">
+        <span class="lg-th" aria-hidden="true"><canvas width="3" height="2"></canvas></span>
+        <span class="lg-m"><span class="lg-no lg-dc">04</span><time class="lg-date lg-dc" datetime="2026-09-19">2026-09-19</time><span class="lg-cat">Data</span><span class="lg-rt lg-dc">4 min read</span></span>
+        <span class="lg-t">Reading thrust off video, one frame at a time</span>
+        <svg class="lg-go" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg>
+      </a></li>
+      <li><a class="lg-a" href="#log" data-img="2" aria-label="Casting our first KNSB grains. Propulsion, 2026-08-30, 5 min read.">
+        <span class="lg-th" aria-hidden="true"><canvas width="3" height="2"></canvas></span>
+        <span class="lg-m"><span class="lg-no lg-dc">03</span><time class="lg-date lg-dc" datetime="2026-08-30">2026-08-30</time><span class="lg-cat">Propulsion</span><span class="lg-rt lg-dc">5 min read</span></span>
+        <span class="lg-t">Casting our first KNSB grains</span>
+        <svg class="lg-go" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg>
+      </a></li>
+      <li><a class="lg-a" href="#log" data-img="3" aria-label="What goes in the avionics bay, and why. Avionics, 2026-08-16, 5 min read.">
+        <span class="lg-th" aria-hidden="true"><canvas width="3" height="2"></canvas></span>
+        <span class="lg-m"><span class="lg-no lg-dc">02</span><time class="lg-date lg-dc" datetime="2026-08-16">2026-08-16</time><span class="lg-cat">Avionics</span><span class="lg-rt lg-dc">5 min read</span></span>
+        <span class="lg-t">What goes in the avionics bay, and why</span>
+        <svg class="lg-go" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg>
+      </a></li>
+      <li><a class="lg-a" href="#log" data-img="4" aria-label="Picking a fin shape for a 98 mm airframe. Airframe, 2026-07-26, 7 min read.">
+        <span class="lg-th" aria-hidden="true"><canvas width="3" height="2"></canvas></span>
+        <span class="lg-m"><span class="lg-no lg-dc">01</span><time class="lg-date lg-dc" datetime="2026-07-26">2026-07-26</time><span class="lg-cat">Airframe</span><span class="lg-rt lg-dc">7 min read</span></span>
+        <span class="lg-t">Picking a fin shape for a 98 mm airframe</span>
+        <svg class="lg-go" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg>
+      </a></li>
+    </ol>
+
+    <footer class="lg-foot">
+      <aside class="tb" aria-label="Sheet 5 of 8, build log"><div><span>Sheet</span><b class="dc">5 of 8</b></div><div><span>Title</span><b class="dc">Build log</b></div><div><span>Rev</span><b class="dc">P0</b></div><div><span>Date</span><b class="dc">2026-10-04</b></div></aside>
+      <p class="note">Pictures are renders from our 3D model until we have photos.</p>
+      <a class="lg-all" href="#log">Read the full log<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10.5M9 4l4 4-4 4"/></svg></a>
+    </footer>
+    <div class="lg-pcap" aria-hidden="true"><span class="lg-tag">Render</span><span class="lg-pcap-t"></span></div>
+    <p class="lg-toast" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="sheet crew" id="crew" data-sheet="Crew">
+    <header class="cr-head">
+      <p class="code" data-code="// 06_crew" aria-hidden="true"></p>
+      <h2 class="h2"><span class="ln"><span>Crew</span></span></h2>
+      <p class="sub">Four of us build it, test it and write it up.</p>
+    </header>
+    <ul class="crew-acc" id="crewAcc">
+      <li class="open"><button class="crew-b" type="button" aria-expanded="true"><span class="ix" aria-hidden="true">01</span><span class="oc" aria-hidden="true">Close</span><span class="ph" aria-hidden="true"><svg class="fig" viewBox="0 0 120 150" preserveAspectRatio="xMidYMax meet"><path class="cl" d="M60 8V150M30 56H90"/><circle cx="60" cy="56" r="22" pathLength="1"/><path d="M14 150C16 114 36 97 60 97S104 114 106 150" pathLength="1"/></svg><span class="pl">Photo</span><span class="pd">4:5, to come</span></span><span class="meta"><span class="n">[Name]</span><span class="rl">Propulsion lead</span><span class="more">Runs casting, the test stand and the thrust data.</span><span class="own">KNSB 65/35</span></span></button></li>
+      <li><button class="crew-b" type="button" aria-expanded="false"><span class="ix" aria-hidden="true">02</span><span class="oc" aria-hidden="true">Open</span><span class="ph" aria-hidden="true"><svg class="fig" viewBox="0 0 120 150" preserveAspectRatio="xMidYMax meet"><path class="cl" d="M60 8V150M30 56H90"/><circle cx="60" cy="56" r="22" pathLength="1"/><path d="M14 150C16 114 36 97 60 97S104 114 106 150" pathLength="1"/></svg><span class="pl">Photo</span><span class="pd">4:5, to come</span></span><span class="meta"><span class="n">[Name]</span><span class="rl">Airframe and fins</span><span class="more">Owns the fin can, the layup and the fillets.</span><span class="own">98 mm airframe</span></span></button></li>
+      <li><button class="crew-b" type="button" aria-expanded="false"><span class="ix" aria-hidden="true">03</span><span class="oc" aria-hidden="true">Open</span><span class="ph" aria-hidden="true"><svg class="fig" viewBox="0 0 120 150" preserveAspectRatio="xMidYMax meet"><path class="cl" d="M60 8V150M30 56H90"/><circle cx="60" cy="56" r="22" pathLength="1"/><path d="M14 150C16 114 36 97 60 97S104 114 106 150" pathLength="1"/></svg><span class="pl">Photo</span><span class="pd">4:5, to come</span></span><span class="meta"><span class="n">[Name]</span><span class="rl">Avionics and data</span><span class="more">Builds the altimeter sled and writes the tools that read our video.</span><span class="own">Sled + video tools</span></span></button></li>
+      <li><button class="crew-b" type="button" aria-expanded="false"><span class="ix" aria-hidden="true">04</span><span class="oc" aria-hidden="true">Open</span><span class="ph" aria-hidden="true"><svg class="fig" viewBox="0 0 120 150" preserveAspectRatio="xMidYMax meet"><path class="cl" d="M60 8V150M30 56H90"/><circle cx="60" cy="56" r="22" pathLength="1"/><path d="M14 150C16 114 36 97 60 97S104 114 106 150" pathLength="1"/></svg><span class="pl">Photo</span><span class="pd">4:5, to come</span></span><span class="meta"><span class="n">[Name]</span><span class="rl">Recovery and safety</span><span class="more">Packs the chutes and runs the range checklist.</span><span class="own">Dual deploy</span></span></button></li>
+    </ul>
+    <aside class="tb" aria-label="Sheet 6 of 8, crew"><div><span>Sheet</span><b class="dc">6 of 8</b></div><div><span>Title</span><b class="dc">Crew</b></div><div><span>Rev</span><b class="dc">P0</b></div><div><span>Date</span><b class="dc">2026-10-04</b></div></aside>
+  </section>
+
+  <section class="sheet launch" id="launch" data-sheet="Flight">
+    <div class="pin">
+      <div class="fly" id="fly" aria-hidden="true"><span>Lift</span><span id="flyO">o</span><span>ff</span></div>
+      <div class="fl-intro" id="flIntro">
+        <p class="code" data-code="// 07_flight_preview" aria-hidden="true"></p>
+        <h2 class="h2"><span class="ln"><span>Flight preview</span></span></h2>
+        <p class="sub">A simulated flight on our 65/35 sample curve: 1.41 kg at liftoff, drag coefficient 0.55. Placeholder numbers until the real motor fires.</p>
+      </div>
+      <div class="fl-end" id="flEnd">
+        <h2 class="h2" id="flApo">Apogee 0 m.</h2>
+        <div class="fl-stats" id="flStats"></div>
+        <button class="btn" id="replayFlight" type="button">Replay from the top</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sheet foot-sheet" id="contact" data-sheet="Launch window">
+  <div class="fcount">
+    <p class="code" data-code="// 08_launch_window" aria-hidden="true"></p>
+    <h2 class="h2"><span class="ln"><span>The real one opens in</span></span></h2>
+    <div class="count" id="count" role="timer" aria-label="Countdown to launch">
+      <div><span class="dg"><b data-u="d">000</b></span><span>days</span></div>
+      <div><span class="dg"><b data-u="h">00</b></span><span>hrs</span></div>
+      <div><span class="dg"><b data-u="m">00</b></span><span>min</span></div>
+      <div><span class="dg"><b data-u="s">00</b></span><span>sec</span></div>
+    </div>
+    <p class="note">Placeholder date. We'll set the real one once we book a club launch.</p>
+  </div>
+  <form class="signup" id="signup" novalidate>
+    <label for="email">Get an email when we launch</label>
+    <div class="row">
+      <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+      <button class="btn solid" type="submit">Notify me</button>
+    </div>
+    <p class="msg" id="msg" aria-live="polite"></p>
+  </form>
+  <div class="foot">
+    <div class="wordmark" id="wordmark" aria-hidden="true">Untitled Rocketry</div>
+    <aside class="tb" aria-label="Sheet 8 of 8, launch window"><div><span>Sheet</span><b class="dc">8 of 8</b></div><div><span>Title</span><b class="dc">Launch window</b></div><div><span>Rev</span><b class="dc">P0</b></div><div><span>Date</span><b class="dc">2026-10-04</b></div></aside>
+    <div class="foot-row">
+      <a href="#log">Build log</a><a href="#data">Test data</a><a href="#progress">Progress</a><a href="#crew">Crew</a>
+      <a href="#contact">[Instagram]</a><a href="#contact">[YouTube]</a>
+      <span class="sp">© 2026 Untitled Rocketry</span>
+    </div>
+  </div>
+</footer>
